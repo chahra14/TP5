@@ -1,0 +1,31 @@
+﻿  AbsUnit.cpp
+  AdminUnit.cpp
+  Division.cpp
+  Drone.cpp
+C:\Users\chahr\Documents\Automne 2023\LOG2400\TP5\CodeDepart (1)\CodeDepart\DroneRescue\Drone.cpp(13,1): error C2512: 'AbsUnit' : aucun constructeur par défaut approprié disponible
+C:\Users\chahr\Documents\Automne 2023\LOG2400\TP5\CodeDepart (1)\CodeDepart\DroneRescue\AbsUnit.h(29,7): message : voir la déclaration de 'AbsUnit'
+C:\Users\chahr\Documents\Automne 2023\LOG2400\TP5\CodeDepart (1)\CodeDepart\DroneRescue\Drone.cpp(12,4): error C2614: 'Drone' : initialisation de membre non conforme : 'AdminUnit' n'est ni une base ni un membre
+C:\Users\chahr\Documents\Automne 2023\LOG2400\TP5\CodeDepart (1)\CodeDepart\DroneRescue\Drone.cpp(20,1): error C2512: 'AbsUnit' : aucun constructeur par défaut approprié disponible
+C:\Users\chahr\Documents\Automne 2023\LOG2400\TP5\CodeDepart (1)\CodeDepart\DroneRescue\AbsUnit.h(29,7): message : voir la déclaration de 'AbsUnit'
+C:\Users\chahr\Documents\Automne 2023\LOG2400\TP5\CodeDepart (1)\CodeDepart\DroneRescue\Drone.cpp(19,4): error C2614: 'Drone' : initialisation de membre non conforme : 'AdminUnit' n'est ni une base ni un membre
+  DronesRescue.cpp
+  Escadron.cpp
+  EscadronAbs.cpp
+  EscadronMandataire.cpp
+  ExtractionProprietesVisitor.cpp
+C:\Users\chahr\Documents\Automne 2023\LOG2400\TP5\CodeDepart (1)\CodeDepart\DroneRescue\ExtractionProprietesVisitor.cpp(110,65): error C3861: 'endl' : identificateur introuvable
+C:\Users\chahr\Documents\Automne 2023\LOG2400\TP5\CodeDepart (1)\CodeDepart\DroneRescue\ExtractionProprietesVisitor.h(43,7): message : Le diagnostic s'est produit dans la fonction 'void ExtractionProprietesVisitor::defaultVisitAdminUnit(const T &)' générée par le compilateur
+C:\Users\chahr\Documents\Automne 2023\LOG2400\TP5\CodeDepart (1)\CodeDepart\DroneRescue\ExtractionProprietesVisitor.cpp(115,53): error C2065: 'i' : identificateur non déclaré
+C:\Users\chahr\Documents\Automne 2023\LOG2400\TP5\CodeDepart (1)\CodeDepart\DroneRescue\ExtractionProprietesVisitor.h(43,7): message : Le diagnostic s'est produit dans la fonction 'void ExtractionProprietesVisitor::defaultVisitAdminUnit(const T &)' générée par le compilateur
+C:\Users\chahr\Documents\Automne 2023\LOG2400\TP5\CodeDepart (1)\CodeDepart\DroneRescue\ExtractionProprietesVisitor.cpp(115,53): error C3861: 'i' : identificateur introuvable
+C:\Users\chahr\Documents\Automne 2023\LOG2400\TP5\CodeDepart (1)\CodeDepart\DroneRescue\ExtractionProprietesVisitor.h(43,7): message : Le diagnostic s'est produit dans la fonction 'void ExtractionProprietesVisitor::defaultVisitAdminUnit(const T &)' générée par le compilateur
+C:\Users\chahr\Documents\Automne 2023\LOG2400\TP5\CodeDepart (1)\CodeDepart\DroneRescue\ExtractionProprietesVisitor.cpp(110,65): error C2065: 'endl' : identificateur non déclaré
+C:\Users\chahr\Documents\Automne 2023\LOG2400\TP5\CodeDepart (1)\CodeDepart\DroneRescue\ExtractionProprietesVisitor.h(43,7): message : Le diagnostic s'est produit dans la fonction 'void ExtractionProprietesVisitor::defaultVisitAdminUnit(const T &)' générée par le compilateur
+  LoggingDecorator.cpp
+  Mission.cpp
+  PlanMissions.cpp
+  QG.cpp
+  RechercheDroneParIdVisitor.cpp
+  RechercheUniteParNomVisitor.cpp
+  Génération de code en cours...
+C:\Users\chahr\Documents\Automne 2023\LOG2400\TP5\CodeDepart (1)\CodeDepart\DroneRescue\LoggingDecorator.cpp(46): error C4716: 'LoggingDecorator::clone' : doit retourner une valeur
