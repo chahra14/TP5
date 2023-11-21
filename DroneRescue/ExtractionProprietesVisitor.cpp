@@ -2,7 +2,7 @@
 //  ExtractionProprietesVisitor.h
 //  Implementation of the Class ExtractionProprietesVisitor
 //  Created on:      2023-11-06
-//  Original author: Eric Germain basé sur les travaux de Francois Guibault
+//  Original author: Eric Germain basÃ© sur les travaux de Francois Guibault
 ///////////////////////////////////////////////////////////
 
 #include "ExtractionProprietesVisitor.h"
@@ -27,7 +27,7 @@ ExtractionProprietesVisitor::ExtractionProprietesVisitor(std::ostream& stream)
 //TODO : Don't understand
 void ExtractionProprietesVisitor::visitDrone(Drone& unit) 
 {
-	// À COMPLÉTER: rediriger vers la méthode similaire pour paramètre constant
+	// Ã€ COMPLÃ‰TER: rediriger vers la mÃ©thode similaire pour paramÃ¨tre constant
 	visitDrone(const_cast<const Drone&>(unit)); 
 }
 
@@ -41,49 +41,49 @@ void ExtractionProprietesVisitor::visitDrone(const Drone& unit)
 
 void ExtractionProprietesVisitor::visitDivision(Division& unit)
 {
-	// À COMPLÉTER: utiliser la méthode par défaut pour les classes dérivées de AdminUnit
+	// Ã€ COMPLÃ‰TER: utiliser la mÃ©thode par dÃ©faut pour les classes dÃ©rivÃ©es de AdminUnit
 	defaultVisitAdminUnit(unit);
 }
 
 void ExtractionProprietesVisitor::visitDivision(const Division& unit)
 {
-	// À COMPLÉTER: utiliser la méthode par défaut pour les classes dérivées de AdminUnit
+	// Ã€ COMPLÃ‰TER: utiliser la mÃ©thode par dÃ©faut pour les classes dÃ©rivÃ©es de AdminUnit
 	defaultVisitAdminUnit(unit);
 }
 
 void ExtractionProprietesVisitor::visitEscadron(Escadron& unit)
 {
-	// À COMPLÉTER: utiliser la méthode par défaut pour les classes dérivées de AdminUnit
+	// Ã€ COMPLÃ‰TER: utiliser la mÃ©thode par dÃ©faut pour les classes dÃ©rivÃ©es de AdminUnit
 	defaultVisitAdminUnit(unit);
 }
 
 void ExtractionProprietesVisitor::visitEscadron(const Escadron& unit)
 {
-	// À COMPLÉTER: utiliser la méthode par défaut pour les classes dérivées de AdminUnit
+	// Ã€ COMPLÃ‰TER: utiliser la mÃ©thode par dÃ©faut pour les classes dÃ©rivÃ©es de AdminUnit
 	defaultVisitAdminUnit(unit);
 }
 
 void ExtractionProprietesVisitor::visitEscadronMandataire(EscadronMandataire& unit)
 {
-	// À COMPLÉTER: utiliser la méthode par défaut pour les classes dérivées de AdminUnit
+	// Ã€ COMPLÃ‰TER: utiliser la mÃ©thode par dÃ©faut pour les classes dÃ©rivÃ©es de AdminUnit
 	defaultVisitAdminUnit(unit);
 }
 
 void ExtractionProprietesVisitor::visitEscadronMandataire(const EscadronMandataire& unit)
 {
-	// À COMPLÉTER: utiliser la méthode par défaut pour les classes dérivées de AdminUnit
+	// Ã€ COMPLÃ‰TER: utiliser la mÃ©thode par dÃ©faut pour les classes dÃ©rivÃ©es de AdminUnit
 	defaultVisitAdminUnit(unit);
 }
 
 void ExtractionProprietesVisitor::visitQG(QG& unit)
 {
-	// À COMPLÉTER: utiliser la méthode par défaut pour les classes dérivées de AdminUnit
+	// Ã€ COMPLÃ‰TER: utiliser la mÃ©thode par dÃ©faut pour les classes dÃ©rivÃ©es de AdminUnit
 	defaultVisitAdminUnit(unit);
 }
 
 void ExtractionProprietesVisitor::visitQG(const QG& unit)
 {
-	// À COMPLÉTER: utiliser la méthode par défaut pour les classes dérivées de AdminUnit
+	// Ã€ COMPLÃ‰TER: utiliser la mÃ©thode par dÃ©faut pour les classes dÃ©rivÃ©es de AdminUnit
 	defaultVisitAdminUnit(unit);
 }
 
@@ -100,16 +100,21 @@ void ExtractionProprietesVisitor::indent(std::ostream& o) const
 template<typename T>
 void ExtractionProprietesVisitor::defaultVisitAdminUnit(const T& unit)
 {
-	// À COMPLÉTER: ajouter les éléments suivants au flux de données
-	//              de maniere à reproduire la sortie (similaire au cas du drone)
-	//				- le nom de l'unité
-	//	            - les paires clé-valeur pour chacune des propriétés
+	// Ã€ COMPLÃ‰TER: ajouter les Ã©lÃ©ments suivants au flux de donnÃ©es
+	//              de maniere Ã  reproduire la sortie (similaire au cas du drone)
+	//				- le nom de l'unitÃ©
+	//	            - les paires clÃ©-valeur pour chacune des propriÃ©tÃ©s
 
 	std::ostream& o;
 
-	o << unit.getNom() << ": {" << unit.getProperties() << " }" << endl;
+	o << unit.getNom() << ": {";
 
-	// Dans un deuxieme temps: itérer sur le contenu de l'unité et visiter chaque élément
+	o << std::for_each(unit.m_properties.begin(), unit.m_properties.end(), [&o](const auto& pair) {
+	o << pair.first << " : " << pair.second << ", ";
+	});
+	o << "}" << endl;
+
+	// Dans un deuxieme temps: itÃ©rer sur le contenu de l'unitÃ© et visiter chaque Ã©lÃ©ment
 
 	indent(o);
 	for (auto it = unit.cbegin(); it != unit.cend(); ++i) {
