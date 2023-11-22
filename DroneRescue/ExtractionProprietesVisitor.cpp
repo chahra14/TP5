@@ -11,6 +11,7 @@
 #include "Escadron.h"
 #include "EscadronMandataire.h"
 #include "QG.h"
+#include <algorithm>
 
 int ExtractionProprietesVisitor::m_indent = 0;
 
