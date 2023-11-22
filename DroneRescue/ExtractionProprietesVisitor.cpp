@@ -93,9 +93,7 @@ void ExtractionProprietesVisitor::indent(std::ostream& o) const
 		o << '\t';
 }
 
-//TODO 
-// 1. ostream??
-// 2. getProperties??
+//TODO
 
 template<typename T>
 void ExtractionProprietesVisitor::defaultVisitAdminUnit(const T& unit)
@@ -105,20 +103,18 @@ void ExtractionProprietesVisitor::defaultVisitAdminUnit(const T& unit)
 	//				- le nom de l'unité
 	//	            - les paires clé-valeur pour chacune des propriétés
 
-	std::ostream& o;
 
-	o << unit.getNom() << ": {";
+	m_stream << unit.getName() << ": {";
 
-	o << std::for_each(unit.m_properties.begin(), unit.m_properties.end(), [&o](const auto& pair) {
-	o << pair.first << " : " << pair.second << ", ";
-	});
-	o << "}" << endl;
+	std::for_each(unit.getProperties().begin(), unit.getProperties().end(), [this](const auto& pair) {
+		m_stream << pair.first << " : " << pair.second << ", ";
+		});
+	m_stream << "}" << std::endl;
 
 	// Dans un deuxieme temps: itérer sur le contenu de l'unité et visiter chaque élément
 
-	indent(o);
-	for (auto it = unit.cbegin(); it != unit.cend(); ++i) {
+	indent(m_stream);
+	for (auto it = unit.cbegin(); it != unit.cend(); ++it) {
 		defaultVisitAdminUnit(*it);
 	}
-}
 
