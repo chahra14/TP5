@@ -2,7 +2,7 @@
 //  RechercheDroneParIdVisitor.h
 //  Implementation of the Class RechercheDroneParIdVisitor
 //  Created on:      2023-11-06
-//  Original author: Eric Germain basé sur les travaux de Francois Guibault
+//  Original author: Eric Germain basÃ© sur les travaux de Francois Guibault
 ///////////////////////////////////////////////////////////
 
 #include "RechercheDroneParIdVisitor.h"
@@ -19,91 +19,96 @@ RechercheDroneParIdVisitor::RechercheDroneParIdVisitor(int id)
 
 void RechercheDroneParIdVisitor::visitDrone(Drone& unit)
 {
-	// À COMPLÉTER: rediriger vers la méthode similaire pour paramètre constant
+	// Ã€ COMPLÃ‰TER: rediriger vers la mÃ©thode similaire pour paramÃ¨tre constant
 
-	visitDrone(const_cast<const Drone&>(unit));
+	visitDrone(const_cast<const Drone&>(unit)); 
 }
 
 void RechercheDroneParIdVisitor::visitDrone(const Drone& unit)
 {
 
-	// À COMPLÉTER: si les identifiants sont les mêmes:
-	// 1. Assigner le drone à l'attribut chargé de le stocker; et
-	// 2. Assigner 'true' à l'attribut chargé de déterminer si on a trouvé.
+	// Ã€ COMPLÃ‰TER: si les identifiants sont les mÃªmes:
+	// 1. Assigner le drone Ã  l'attribut chargÃ© de le stocker; et
+	// 2. Assigner 'true' Ã  l'attribut chargÃ© de dÃ©terminer si on a trouvÃ©.
 
-	if (unit.getId() == m_searchedId) {
-		m_droneFound = new Drone(unit);
-		m_isDroneFound = true;
+	if (unit.getId() == m_searchedId)
+	{
+		m_droneFound = &unit; 
+		m_isDroneFound = true; 
 	}
 
 }
 
 void RechercheDroneParIdVisitor::visitDivision(Division& unit)
 {
-	// À COMPLÉTER: utiliser la méthode par défaut pour les classes dérivées de AdminUnit
+	// Ã€ COMPLÃ‰TER: utiliser la mÃ©thode par dÃ©faut pour les classes dÃ©rivÃ©es de AdminUnit
 	defaultVisitAdminUnit(unit);
 }
 
 void RechercheDroneParIdVisitor::visitDivision(const Division& unit)
 {
-	// À COMPLÉTER: utiliser la méthode par défaut pour les classes dérivées de AdminUnit
+	// Ã€ COMPLÃ‰TER: utiliser la mÃ©thode par dÃ©faut pour les classes dÃ©rivÃ©es de AdminUnit
 	defaultVisitAdminUnit(unit); 
 }
 
 void RechercheDroneParIdVisitor::visitEscadron(Escadron& unit)
 {
-	// À COMPLÉTER: utiliser la méthode par défaut pour les classes dérivées de AdminUnit
+	// Ã€ COMPLÃ‰TER: utiliser la mÃ©thode par dÃ©faut pour les classes dÃ©rivÃ©es de AdminUnit
 	defaultVisitAdminUnit(unit); 
 }
 
 void RechercheDroneParIdVisitor::visitEscadron(const Escadron& unit)
 {
-	// À COMPLÉTER: utiliser la méthode par défaut pour les classes dérivées de AdminUnit
+	// Ã€ COMPLÃ‰TER: utiliser la mÃ©thode par dÃ©faut pour les classes dÃ©rivÃ©es de AdminUnit
 	defaultVisitAdminUnit(unit); 
 }
 
 void RechercheDroneParIdVisitor::visitEscadronMandataire(EscadronMandataire& unit)
 {
-	// À COMPLÉTER: utiliser la méthode par défaut pour les classes dérivées de AdminUnit
+	// Ã€ COMPLÃ‰TER: utiliser la mÃ©thode par dÃ©faut pour les classes dÃ©rivÃ©es de AdminUnit
 	defaultVisitAdminUnit(unit); 
 }
 
 void RechercheDroneParIdVisitor::visitEscadronMandataire(const EscadronMandataire& unit)
 {
-	// À COMPLÉTER: utiliser la méthode par défaut pour les classes dérivées de AdminUnit
+	// Ã€ COMPLÃ‰TER: utiliser la mÃ©thode par dÃ©faut pour les classes dÃ©rivÃ©es de AdminUnit
 	defaultVisitAdminUnit(unit);  
 }
 
 void RechercheDroneParIdVisitor::visitQG(QG& unit)
 {
-	// À COMPLÉTER: utiliser la méthode par défaut pour les classes dérivées de AdminUnit
+	// Ã€ COMPLÃ‰TER: utiliser la mÃ©thode par dÃ©faut pour les classes dÃ©rivÃ©es de AdminUnit
 	defaultVisitAdminUnit(unit);  
 }
 
 void RechercheDroneParIdVisitor::visitQG(const QG& unit)
 {
-	// À COMPLÉTER: utiliser la méthode par défaut pour les classes dérivées de AdminUnit
+	// Ã€ COMPLÃ‰TER: utiliser la mÃ©thode par dÃ©faut pour les classes dÃ©rivÃ©es de AdminUnit
 	defaultVisitAdminUnit(unit); 
 }
 
 
-//TODO
-// NOT SURE OF THE ITERATION : not using the iterator of adminUnit
+
 
 template<typename T>
 void RechercheDroneParIdVisitor::defaultVisitAdminUnit(const T& unit)
 {
-	// À COMPLÉTER: itérer sur le contenu de l'unité et appliquer
-	// le visiteur sur chaque élément.
-	// NOTE: vous devez stopper la recherche dès qu'un drone a été trouvé.
+	// Ã€ COMPLÃ‰TER: itÃ©rer sur le contenu de l'unitÃ© et appliquer
+	// le visiteur sur chaque Ã©lÃ©ment.
+	// NOTE: vous devez stopper la recherche dÃ¨s qu'un drone a Ã©tÃ© trouvÃ©
 
-	for (auto it = unit.cbegin(); it != unit.cend(); it++) {
-		defaultVisitAdminUnit(*it);
-		if (m_isDroneFound == true) {
+
+	for (auto it = unit.cbegin(); it != unit.cend(); ++it) 
+	{
+		it->accept(*this);
+		if (m_isDroneFound == true) 
+		{
+			m_currentIterator = new UnitIterator_const(it);
 			break;
 		}
 	}
 }
+
 
 
 
