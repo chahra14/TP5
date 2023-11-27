@@ -2,7 +2,7 @@
 //  RechercheUniteParNomVisitor.h
 //  Implementation of the Class RechercheUniteParNomVisitor
 //  Created on:      2023-11-06
-//  Original author: Eric Germain basé sur les travaux de Francois Guibault
+//  Original author: Eric Germain basÃ© sur les travaux de Francois Guibault
 ///////////////////////////////////////////////////////////
 
 #include "RechercheUniteParNomVisitor.h"
@@ -19,76 +19,77 @@ RechercheUniteParNomVisitor::RechercheUniteParNomVisitor(std::string nom)
 
 void RechercheUniteParNomVisitor::visitDrone(Drone& unit)
 {
-	// À COMPLÉTER: rediriger vers la méthode similaire pour paramètre constant
+	// Ã€ COMPLÃ‰TER: rediriger vers la mÃ©thode similaire pour paramÃ¨tre constant
 	visitDrone(const_cast<const Drone&>(unit));
 }
 
 void RechercheUniteParNomVisitor::visitDrone(const Drone& unit)
 {
-	// À COMPLÉTER: si les noms sont les mêmes, ajouter l'unité à la structure de données
-	// contenant les éléments trouvés.
+	// Ã€ COMPLÃ‰TER: si les noms sont les mÃªmes, ajouter l'unitÃ© Ã  la structure de donnÃ©es
+	// contenant les Ã©lÃ©ments trouvÃ©s.
 
 	if (m_searchedName == unit.getName()) {
-		m_unitsFound.push_back(*m_currentIterator);
+		m_unitsFound.push_back(*m_currentIterator); 
 	}
 }
 
 void RechercheUniteParNomVisitor::visitDivision(Division& unit)
 {
-	// À COMPLÉTER: utiliser la méthode par défaut pour les classes dérivées de AdminUnit
+	// Ã€ COMPLÃ‰TER: utiliser la mÃ©thode par dÃ©faut pour les classes dÃ©rivÃ©es de AdminUnit
 	defaultVisitAdminUnit(unit);
 }
 
 void RechercheUniteParNomVisitor::visitDivision(const Division& unit)
 {
-	// À COMPLÉTER: utiliser la méthode par défaut pour les classes dérivées de AdminUnit
+	// Ã€ COMPLÃ‰TER: utiliser la mÃ©thode par dÃ©faut pour les classes dÃ©rivÃ©es de AdminUnit
 	defaultVisitAdminUnit(unit);
 }
 
 void RechercheUniteParNomVisitor::visitEscadron(Escadron& unit)
 {
-	// À COMPLÉTER: utiliser la méthode par défaut pour les classes dérivées de AdminUnit
+	// Ã€ COMPLÃ‰TER: utiliser la mÃ©thode par dÃ©faut pour les classes dÃ©rivÃ©es de AdminUnit
 	defaultVisitAdminUnit(unit);
 }
 
 void RechercheUniteParNomVisitor::visitEscadron(const Escadron& unit)
 {
-	// À COMPLÉTER: utiliser la méthode par défaut pour les classes dérivées de AdminUnit
+	// Ã€ COMPLÃ‰TER: utiliser la mÃ©thode par dÃ©faut pour les classes dÃ©rivÃ©es de AdminUnit
 	defaultVisitAdminUnit(unit);
 }
 
 void RechercheUniteParNomVisitor::visitEscadronMandataire(EscadronMandataire& unit)
 {
-	// À COMPLÉTER: utiliser la méthode par défaut pour les classes dérivées de AdminUnit
+	// Ã€ COMPLÃ‰TER: utiliser la mÃ©thode par dÃ©faut pour les classes dÃ©rivÃ©es de AdminUnit
 	defaultVisitAdminUnit(unit);
 }
 
 void RechercheUniteParNomVisitor::visitEscadronMandataire(const EscadronMandataire& unit)
 {
-	// À COMPLÉTER: utiliser la méthode par défaut pour les classes dérivées de AdminUnit
+	// Ã€ COMPLÃ‰TER: utiliser la mÃ©thode par dÃ©faut pour les classes dÃ©rivÃ©es de AdminUnit
 	defaultVisitAdminUnit(unit);
 }
 
 void RechercheUniteParNomVisitor::visitQG(QG& unit)
 {
-	// À COMPLÉTER: utiliser la méthode par défaut pour les classes dérivées de AdminUnit
+	// Ã€ COMPLÃ‰TER: utiliser la mÃ©thode par dÃ©faut pour les classes dÃ©rivÃ©es de AdminUnit
 	defaultVisitAdminUnit(unit);
 }
 
 void RechercheUniteParNomVisitor::visitQG(const QG& unit)
 {
-	// À COMPLÉTER: utiliser la méthode par défaut pour les classes dérivées de AdminUnit
+	// Ã€ COMPLÃ‰TER: utiliser la mÃ©thode par dÃ©faut pour les classes dÃ©rivÃ©es de AdminUnit
 	defaultVisitAdminUnit(unit);
 }
 
 template<typename T>
 void RechercheUniteParNomVisitor::defaultVisitAdminUnit(const T& unit)
 {
-	// À COMPLÉTER: itérer sur le contenu de l'unité
-	// et appliquer le visiteur sur chaque élément
+	// Ã€ COMPLÃ‰TER: itÃ©rer sur le contenu de l'unitÃ©
+	// et appliquer le visiteur sur chaque Ã©lÃ©ment
 
-	for (auto it = unit.cbegin(); it != it.cend(); it++) {
-		defaultVisitAdminUnit(unit);
+	for (auto it = unit.cbegin(); it != unit.cend(); it++) {
+		m_currentIterator = new UnitIterator_const(it);
+		it->accept(*this);
 	}
 }
 
@@ -116,5 +117,3 @@ void RechercheUniteParNomVisitor::reset()
 {
 	m_unitsFound.clear();
 }
-
-
