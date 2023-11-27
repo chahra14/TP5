@@ -25,7 +25,6 @@ ExtractionProprietesVisitor::ExtractionProprietesVisitor(std::ostream& stream)
 {
 }
 
-//TODO : Don't understand
 void ExtractionProprietesVisitor::visitDrone(Drone& unit) 
 {
 	// À COMPLÉTER: rediriger vers la méthode similaire pour paramètre constant
@@ -94,7 +93,8 @@ void ExtractionProprietesVisitor::indent(std::ostream& o) const
 		o << '\t';
 }
 
-//TODO
+//TODO 
+// 2. getProperties??
 
 template<typename T>
 void ExtractionProprietesVisitor::defaultVisitAdminUnit(const T& unit)
@@ -107,10 +107,12 @@ void ExtractionProprietesVisitor::defaultVisitAdminUnit(const T& unit)
 
 	m_stream << unit.getName() << ": {";
 
-	std::for_each(unit.getProperties().begin(), unit.getProperties().end(), [this](const auto& pair) {
-		m_stream << pair.first << " : " << pair.second << ", ";
-		});
+	for (const auto& pair : unit.getProperties()) {
+		m_stream << pair.first << " : " << pair.second << ", })";
+	}
 	m_stream << "}" << std::endl;
+
+
 
 	// Dans un deuxieme temps: itérer sur le contenu de l'unité et visiter chaque élément
 
@@ -118,4 +120,4 @@ void ExtractionProprietesVisitor::defaultVisitAdminUnit(const T& unit)
 	for (auto it = unit.cbegin(); it != unit.cend(); ++it) {
 		defaultVisitAdminUnit(*it);
 	}
-
+}
