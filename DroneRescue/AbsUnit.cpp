@@ -2,7 +2,7 @@
 //  AbsUnit.cpp
 //  Implementation of the Class AbsUnit
 //  Created on:      2023-10-30
-//  Original author: Eric Germain basé sur les travaux de Francois Guibault
+//  Original author: Eric Germain basÃ© sur les travaux de Francois Guibault
 ///////////////////////////////////////////////////////////
 
 #include "AbsUnit.h"
@@ -18,6 +18,11 @@ AbsUnit::AbsUnit(std::string name, AbsUnit* parent) : m_name(name), m_properties
 		fullPath = parent->getFullPath() + name + "/";
 }
 
+AbsUnit::AbsUnit(std::string name, std::string fp) : m_name(name), m_properties({})
+{
+	fullPath = fp; 
+}
+
 AbsUnit& AbsUnit::addUnit(const AbsUnit& unit)
 {
 	return *(*(m_emptyContainer.begin()));
@@ -25,25 +30,25 @@ AbsUnit& AbsUnit::addUnit(const AbsUnit& unit)
 
 UnitIterator AbsUnit::begin()
 {
-	// À compléter
+	// Ã€ complÃ©ter
 	return UnitIterator(m_emptyContainer.begin()); 
 }
 
 UnitIterator AbsUnit::end()
 {
-	// À compléter
+	// Ã€ complÃ©ter
 	return UnitIterator(m_emptyContainer.end());
 }
 
 UnitIterator_const AbsUnit::cbegin() const
 {
-	// À compléter
+	// Ã€ complÃ©ter
 	return UnitIterator_const(m_emptyContainer.cbegin());
 }
 
 UnitIterator_const AbsUnit::cend() const
 {
-	// À compléter
+	// Ã€ complÃ©ter
 	return UnitIterator_const(m_emptyContainer.cend());
 }
 
@@ -61,7 +66,7 @@ std::ostream& AbsUnit::indent(std::ostream& o) const
 
 std::ostream& operator<<(std::ostream& o, const AbsUnit& unit)
 {
-	// À compléter
+	// Ã€ complÃ©ter
 	
 	return unit.printToStream(o); 
 }
