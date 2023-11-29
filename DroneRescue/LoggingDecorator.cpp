@@ -2,7 +2,7 @@
 //  LoggingDecorator.cpp
 //  Implementation of the Class LoggingDecorator
 //  Created on:      2023-11-11
-//  Original author: Eric Germain basé sur les travaux de Francois Guibault
+//  Original author: Eric Germain basÃ© sur les travaux de Francois Guibault
 ///////////////////////////////////////////////////////////
 
 #include "LoggingDecorator.h"
@@ -42,7 +42,9 @@ LoggingDecorator::~LoggingDecorator()
 
 LoggingDecorator* LoggingDecorator::clone(void) const
 {
-	// À COMPLÉTER
+	// Ã€ COMPLÃ‰TER
+	return new LoggingDecorator(*this);
+
 }
 
 std::string LoggingDecorator::getUnitType(void) const
@@ -52,12 +54,18 @@ std::string LoggingDecorator::getUnitType(void) const
 
 void LoggingDecorator::accept(class AbsUnitVisitor& v)
 {
-	// À COMPLÉTER
+	// Ã€ COMPLÃ‰TER
+	
+	m_component->accept(v);  
+	
 }
 
 void LoggingDecorator::accept(class AbsUnitVisitor& v) const
 {
-	// À COMPLÉTER
+	// Ã€ COMPLÃ‰TER
+	
+	m_component->accept(v);  
+	
 }
 
 AbsUnit& LoggingDecorator::addUnit(const AbsUnit& member)
@@ -130,5 +138,7 @@ std::ostream& LoggingDecorator::printToStream(std::ostream& o) const
 	outf.close();
 	return o << *m_component;
 }
+
+
 
 
